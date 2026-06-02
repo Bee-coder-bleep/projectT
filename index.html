@@ -1,122 +1,1388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Tanks - Water Storage Solutions</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TopTank Kenya – Kenya's #1 double-layered water tanks from 100L to 24,000L. UV-protected, food-grade polyethylene. Free delivery across Kenya.">
+<title>TopTank Kenya – Kenya's #1 Water Tank Manufacturer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://www.toptank.com/wp-content/uploads/2021/03/TopTank-Website-Logos-04.png">
+<style>
+/* ==========================================================
+   DESIGN TOKENS
+   ========================================================== */
+:root{
+  /* Brand - TopTank yellow + dark navy */
+  --yellow:      #F5A800;
+  --yellow-dark: #D4900A;
+  --yellow-light:#FFD060;
+  --yellow-pale: #FFF8E7;
+  --navy:        #0D1B2A;
+  --navy-mid:    #1A2E44;
+  --blue:        #1565C0;
+  --blue-light:  #1976D2;
+  --dark:        #111827;
+  --mid:         #374151;
+  --muted:       #6B7280;
+  --border:      #E5E7EB;
+  --white:       #FFFFFF;
+  --off-white:   #F9FAFB;
+  --green:       #16A34A;
+  --red:         #DC2626;
+  --font-display:'Barlow Condensed',sans-serif;
+  --font-body:   'Barlow',sans-serif;
+  --nav-h:       72px;
+  --radius:      8px;
+  --radius-lg:   14px;
+  --shadow-sm:   0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:   0 4px 18px rgba(0,0,0,.12);
+  --shadow-lg:   0 14px 44px rgba(0,0,0,.18);
+  --transition:  .26s cubic-bezier(.4,0,.2,1);
+}
 
-        header {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+/* ==========================================================
+   RESET
+   ========================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--dark);background:var(--white);overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+input,select,textarea{font-family:inherit}
 
-        nav {
-            background: #007bff;
-            text-align: center;
-            padding: 10px;
-        }
+/* ==========================================================
+   UTILITY
+   ========================================================== */
+.container{width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+.section-tag{display:inline-block;font-family:var(--font-display);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow-dark);background:var(--yellow-pale);border:1px solid #f5a80040;padding:5px 14px;border-radius:100px;margin-bottom:14px}
+.section-title{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.08;color:var(--dark);text-transform:uppercase;letter-spacing:.02em}
+.section-title span{color:var(--yellow)}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;margin-top:12px;font-weight:300}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-            font-weight: bold;
-        }
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:var(--radius);font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;transition:var(--transition);cursor:pointer;white-space:nowrap}
+.btn-yellow{background:var(--yellow);color:var(--navy)}
+.btn-yellow:hover{background:var(--yellow-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,168,0,.4)}
+.btn-navy{background:var(--navy);color:var(--white)}
+.btn-navy:hover{background:var(--navy-mid);transform:translateY(-2px)}
+.btn-outline-yellow{background:transparent;color:var(--yellow);border:2px solid var(--yellow)}
+.btn-outline-yellow:hover{background:var(--yellow);color:var(--navy)}
+.btn-outline-white{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.55)}
+.btn-outline-white:hover{background:var(--white);color:var(--navy)}
+.btn-white{background:var(--white);color:var(--navy)}
+.btn-white:hover{background:var(--yellow-pale)}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:#15803d;transform:translateY(-2px)}
+.btn-sm{padding:9px 18px;font-size:.82rem}
 
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: white;
-        }
+/* Grids */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 
-        .hero h1 {
-            color: #007bff;
-        }
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .65s ease,transform .65s ease}
+.reveal-l.visible{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal-r.visible{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}[data-d="3"]{transition-delay:.24s}
+[data-d="4"]{transition-delay:.32s}[data-d="5"]{transition-delay:.40s}[data-d="6"]{transition-delay:.48s}
 
-        .btn {
-            display: inline-block;
-            background: #007bff;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+/* ==========================================================
+   TOP BAR
+   ========================================================== */
+.topbar{background:var(--navy);color:rgba(255,255,255,.72);font-size:.78rem;padding:7px 0}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.topbar a{color:rgba(255,255,255,.72);display:inline-flex;align-items:center;gap:5px;transition:color .2s}
+.topbar a:hover{color:var(--yellow)}
+.topbar-r{display:flex;gap:20px}
+.topbar svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
 
-        .products {
-            padding: 40px 20px;
-            text-align: center;
-        }
+/* ==========================================================
+   NAV
+   ========================================================== */
+.nav-wrap{position:sticky;top:0;z-index:900;background:var(--white);border-bottom:3px solid var(--yellow);box-shadow:var(--shadow-sm);transition:box-shadow .3s}
+.nav-wrap.scrolled{box-shadow:0 3px 22px rgba(0,0,0,.13)}
+nav.main-nav{display:flex;align-items:center;height:var(--nav-h);gap:0}
 
-        .card {
-            display: inline-block;
-            width: 250px;
-            margin: 10px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+/* Logo */
+.nav-logo{display:flex;align-items:center;gap:10px;margin-right:32px;flex-shrink:0}
+.logo-mark{width:42px;height:42px;background:var(--yellow);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark svg{width:26px;height:26px;fill:var(--navy)}
+.logo-text{font-family:var(--font-display);font-size:1.65rem;font-weight:800;letter-spacing:.04em;line-height:1}
+.logo-text strong{color:var(--navy)}
+.logo-text span{color:var(--yellow)}
 
-        footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
+/* Nav links */
+.nav-links{display:flex;align-items:center;gap:2px;flex:1}
+.nav-item{position:relative}
+.nav-link{display:flex;align-items:center;gap:3px;padding:8px 13px;font-family:var(--font-display);font-weight:600;font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;color:var(--mid);border-radius:6px;transition:var(--transition)}
+.nav-link:hover,.nav-link.active{color:var(--yellow-dark);background:var(--yellow-pale)}
+.nav-link .chev{width:11px;height:11px;fill:currentColor;transition:transform .2s}
+.nav-item:hover .nav-link .chev{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 6px);left:0;min-width:210px;background:var(--white);border:1px solid var(--border);border-top:3px solid var(--yellow);border-radius:0 0 var(--radius) var(--radius);box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(-6px);transition:var(--transition)}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:none}
+.dropdown a{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:.88rem;font-weight:500;color:var(--mid);border-bottom:1px solid var(--border);transition:var(--transition)}
+.dropdown a:last-child{border-bottom:none}
+.dropdown a::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--yellow);flex-shrink:0;opacity:0;transition:opacity .2s}
+.dropdown a:hover{color:var(--yellow-dark);background:var(--yellow-pale);padding-left:20px}
+.dropdown a:hover::before{opacity:1}
+
+/* Nav right */
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+
+/* Cart button */
+.cart-btn{position:relative;width:42px;height:42px;border-radius:var(--radius);background:var(--yellow-pale);border:1px solid var(--yellow);display:flex;align-items:center;justify-content:center;color:var(--navy);transition:var(--transition);cursor:pointer}
+.cart-btn:hover{background:var(--yellow);border-color:var(--yellow-dark)}
+.cart-btn svg{width:20px;height:20px;fill:currentColor}
+.cart-count{position:absolute;top:-6px;right:-6px;width:18px;height:18px;background:var(--red);color:var(--white);border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--white);transition:transform .2s}
+.cart-count.bump{transform:scale(1.4)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:6px;transition:var(--transition)}
+.hamburger:hover{background:var(--yellow-pale)}
+.hamburger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:var(--transition)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ==========================================================
+   CART SIDEBAR
+   ========================================================== */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1200;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(2px)}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100vw);background:var(--white);z-index:1201;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:var(--shadow-lg)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:3px solid var(--yellow);background:var(--navy)}
+.cart-head h2{font-family:var(--font-display);font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--white);display:flex;align-items:center;gap:10px}
+.cart-head h2 svg{width:20px;height:20px;fill:var(--yellow)}
+.cart-close{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--white);transition:var(--transition);cursor:pointer;border:none}
+.cart-close:hover{background:var(--red);transform:rotate(90deg)}
+.cart-close svg{width:16px;height:16px;fill:currentColor}
+.cart-body{flex:1;overflow-y:auto;padding:20px 24px}
+.cart-empty{text-align:center;padding:60px 0;color:var(--muted)}
+.cart-empty svg{width:56px;height:56px;fill:var(--border);margin:0 auto 14px}
+.cart-empty p{font-family:var(--font-display);font-size:1rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.cart-empty span{font-size:.85rem}
+.cart-item{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border)}
+.cart-item:last-child{border-bottom:none}
+.cart-item-icon{width:52px;height:52px;background:var(--yellow-pale);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--yellow)}
+.cart-item-icon svg{width:28px;height:28px;fill:var(--yellow-dark)}
+.cart-item-info{flex:1}
+.cart-item-name{font-family:var(--font-display);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.03em;color:var(--dark);line-height:1.2;margin-bottom:4px}
+.cart-item-cap{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.cart-item-row{display:flex;align-items:center;gap:10px}
+.qty-ctrl{display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.qty-btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--off-white);color:var(--mid);font-size:1rem;font-weight:700;transition:var(--transition);border:none;cursor:pointer}
+.qty-btn:hover{background:var(--yellow);color:var(--navy)}
+.qty-val{width:32px;text-align:center;font-weight:700;font-size:.9rem;color:var(--dark)}
+.cart-item-price{font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--navy);margin-left:auto}
+.cart-item-del{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:var(--transition);cursor:pointer;border:none;background:none;margin-left:4px}
+.cart-item-del:hover{background:var(--red);color:var(--white)}
+.cart-item-del svg{width:14px;height:14px;fill:currentColor}
+.cart-foot{padding:20px 24px;border-top:1px solid var(--border);background:var(--off-white)}
+.cart-subtotal{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:.9rem;color:var(--muted)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.cart-total-label{font-family:var(--font-display);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.05em}
+.cart-total-amt{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--navy)}
+.cart-actions{display:flex;flex-direction:column;gap:10px}
+.cart-note{font-size:.75rem;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
+
+/* ==========================================================
+   ORDER MODAL
+   ========================================================== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1400;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--white);border-radius:var(--radius-lg);width:100%;max-width:520px;max-height:90vh;overflow-y:auto;transform:scale(.94) translateY(20px);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-lg)}
+.modal-overlay.open .modal{transform:none}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:3px solid var(--yellow);background:var(--navy);border-radius:var(--radius-lg) var(--radius-lg) 0 0;position:sticky;top:0;z-index:2}
+.modal-head h3{font-family:var(--font-display);font-size:1.3rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--white)}
+.modal-head h3 span{color:var(--yellow)}
+.modal-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:var(--white);cursor:pointer;border:none;transition:var(--transition)}
+.modal-close:hover{background:var(--red);transform:rotate(90deg)}
+.modal-close svg{width:15px;height:15px;fill:currentColor}
+.modal-body{padding:26px}
+.order-summary-box{background:var(--yellow-pale);border:1px solid var(--yellow);border-radius:var(--radius);padding:16px;margin-bottom:22px}
+.order-summary-box h4{font-family:var(--font-display);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow-dark);margin-bottom:10px}
+.osb-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:.9rem}
+.osb-row:last-child{margin-bottom:0;padding-top:8px;border-top:1px solid var(--yellow);font-weight:700}
+.osb-row .osb-label{color:var(--mid)}
+.osb-row .osb-val{font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--navy)}
+.osb-row:last-child .osb-val{font-size:1.2rem;color:var(--yellow-dark)}
+.qty-selector{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.qty-selector label{font-family:var(--font-display);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mid)}
+.qty-selector .qty-ctrl{border:1px solid var(--yellow)}
+.qty-selector .qty-btn{width:32px;height:32px}
+.qty-selector .qty-val{width:36px;font-size:1rem}
+/* Form inside modal */
+.mform-group{margin-bottom:16px}
+.mform-group label{display:block;font-family:var(--font-display);font-weight:600;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.mform-group label span{color:var(--red)}
+.mform-group input,.mform-group select,.mform-group textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:.93rem;color:var(--dark);background:var(--white);outline:none;transition:border-color .2s,box-shadow .2s}
+.mform-group input:focus,.mform-group select:focus,.mform-group textarea:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(245,168,0,.15)}
+.mform-group textarea{resize:vertical;min-height:80px}
+.mform-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.modal-foot{padding:0 26px 26px;display:flex;flex-direction:column;gap:10px}
+/* Success state */
+.order-success{text-align:center;padding:40px 20px}
+.order-success .success-icon{width:72px;height:72px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.order-success .success-icon svg{width:38px;height:38px;fill:var(--white)}
+.order-success h3{font-family:var(--font-display);font-size:1.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:10px}
+.order-success p{color:var(--muted);font-size:.95rem;max-width:340px;margin:0 auto 24px}
+
+/* ==========================================================
+   MOBILE MENU DRAWER
+   ========================================================== */
+.mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s}
+.mob-overlay.open{opacity:1;pointer-events:all}
+.mob-drawer{position:fixed;top:0;left:0;height:100%;width:min(320px,88vw);background:var(--white);z-index:1001;transform:translateX(-100%);transition:transform .33s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:var(--shadow-lg)}
+.mob-drawer.open{transform:none}
+.mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:3px solid var(--yellow);background:var(--navy)}
+.mob-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--white);border:none;cursor:pointer}
+.mob-close svg{width:15px;height:15px;fill:currentColor}
+.mob-body{flex:1;overflow-y:auto}
+.mob-link{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dark);border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s}
+.mob-link:hover{background:var(--yellow-pale);color:var(--yellow-dark)}
+.mob-link svg{width:12px;height:12px;fill:currentColor;transition:transform .2s}
+.mob-sub{display:none;background:var(--off-white)}
+.mob-sub.open{display:block}
+.mob-sub a{display:block;padding:11px 32px;font-size:.88rem;font-weight:500;color:var(--mid);border-bottom:1px solid var(--border)}
+.mob-sub a:hover{color:var(--yellow-dark);background:var(--yellow-pale)}
+.mob-foot{padding:20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--border)}
+
+/* ==========================================================
+   HERO SLIDER
+   ========================================================== */
+.hero{position:relative;height:calc(100vh - var(--nav-h) - 34px);min-height:500px;max-height:720px;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;z-index:0}
+.slide.active{opacity:1;z-index:1}
+.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.slide-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(108deg,rgba(13,27,42,.82) 32%,rgba(13,27,42,.4) 65%,rgba(13,27,42,.1) 100%)}
+/* placeholder gradients per slide */
+.s1 .slide-bg{background:linear-gradient(140deg,#0a1828 0%,#0d2a5e 40%,#1a4070 100%)}
+.s2 .slide-bg{background:linear-gradient(140deg,#0a1505 0%,#1a3d10 40%,#2a5a1a 100%)}
+.s3 .slide-bg{background:linear-gradient(140deg,#1c0a04 0%,#4a1a08 40%,#7a3010 100%)}
+.s4 .slide-bg{background:linear-gradient(140deg,#0d0a20 0%,#1a1050 40%,#2a1880 100%)}
+.slide-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
+.slide-content .container{display:flex;flex-direction:column;justify-content:center;height:100%}
+.s-eyebrow{font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;opacity:0;transform:translateY(16px);transition:opacity .6s .15s,transform .6s .15s}
+.slide.active .s-eyebrow{opacity:1;transform:none}
+.s-head{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,4.8rem);font-weight:800;line-height:1;color:var(--white);text-transform:uppercase;letter-spacing:.02em;max-width:640px;margin-bottom:18px;opacity:0;transform:translateY(24px);transition:opacity .6s .3s,transform .6s .3s}
+.slide.active .s-head{opacity:1;transform:none}
+.s-head em{color:var(--yellow);font-style:normal}
+.s-desc{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:440px;margin-bottom:30px;font-weight:300;opacity:0;transform:translateY(16px);transition:opacity .6s .45s,transform .6s .45s}
+.slide.active .s-desc{opacity:1;transform:none}
+.s-cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(14px);transition:opacity .6s .6s,transform .6s .6s}
+.slide.active .s-cta{opacity:1;transform:none}
+/* slider controls */
+.sl-dots{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:5}
+.sl-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35);border:none;cursor:pointer;transition:var(--transition)}
+.sl-dot.active{background:var(--yellow);transform:scale(1.35)}
+.sl-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:48px;height:48px;border-radius:50%;background:rgba(13,27,42,.45);color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);border:none;backdrop-filter:blur(4px)}
+.sl-arrow:hover{background:var(--yellow);color:var(--navy)}
+.sl-arrow svg{width:20px;height:20px;fill:currentColor}
+.sl-prev{left:22px}.sl-next{right:22px}
+/* hero strip */
+.hero-strip{background:var(--yellow);padding:0}
+.hs-inner{display:flex;justify-content:space-between;align-items:stretch}
+.hs-item{flex:1;display:flex;align-items:center;gap:11px;padding:16px 22px;border-right:1px solid rgba(13,27,42,.15);cursor:default;transition:background .2s}
+.hs-item:last-child{border-right:none}
+.hs-item:hover{background:var(--yellow-dark)}
+.hs-item svg{width:28px;height:28px;fill:var(--navy);flex-shrink:0}
+.hs-item strong{display:block;font-family:var(--font-display);font-weight:700;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase;color:var(--navy)}
+.hs-item span{font-size:.75rem;color:rgba(13,27,42,.65)}
+
+/* ==========================================================
+   CATEGORIES
+   ========================================================== */
+.categories{padding:76px 0}
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:44px}
+.cat-card{border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;background:var(--white);transition:var(--transition)}
+.cat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--yellow)}
+.cat-icon-bg{height:130px;display:flex;align-items:center;justify-content:center;background:var(--yellow-pale);transition:background .25s}
+.cat-card:hover .cat-icon-bg{background:var(--yellow)}
+.cat-icon-bg svg{width:58px;height:58px;fill:var(--yellow-dark);transition:fill .25s, transform .3s}
+.cat-card:hover .cat-icon-bg svg{fill:var(--navy);transform:scale(1.1)}
+.cat-lbl{padding:13px 10px;text-align:center;font-family:var(--font-display);font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dark);transition:color .25s;border-top:1px solid var(--border)}
+.cat-card:hover .cat-lbl{color:var(--yellow-dark)}
+
+/* ==========================================================
+   FIND-TANK BANNER
+   ========================================================== */
+.find-tank{background:var(--navy);padding:60px 0;position:relative;overflow:hidden}
+.find-tank::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(245,168,0,.04) 0,rgba(245,168,0,.04) 1px,transparent 1px,transparent 22px)}
+.ft-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.ft-text h2{font-family:var(--font-display);font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:.02em}
+.ft-text h2 em{color:var(--yellow);font-style:normal}
+.ft-text p{color:rgba(255,255,255,.55);margin-top:8px;font-weight:300}
+
+/* ==========================================================
+   BENEFITS
+   ========================================================== */
+.benefits{background:var(--navy);padding:0 0 70px}
+.ben-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;margin-top:0}
+.ben-item{padding:34px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.08);transition:background .25s;cursor:default}
+.ben-item:last-child{border-right:none}
+.ben-item:hover{background:rgba(245,168,0,.08)}
+.ben-icon{width:60px;height:60px;margin:0 auto 16px;background:rgba(245,168,0,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.ben-item:hover .ben-icon{background:var(--yellow)}
+.ben-icon svg{width:28px;height:28px;fill:var(--yellow);transition:fill .25s}
+.ben-item:hover .ben-icon svg{fill:var(--navy)}
+.ben-item h3{font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.05em;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+.ben-item p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.55;font-weight:300}
+
+/* ==========================================================
+   WHY CHOOSE
+   ========================================================== */
+.why-us{padding:88px 0;background:var(--off-white)}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
+.why-visual{position:relative;display:flex;justify-content:center}
+.tank-mock{width:340px;height:340px;border-radius:50%;background:linear-gradient(135deg,#fff8e7 0%,#ffe6a0 60%,#f5a800 100%);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 0 20px rgba(245,168,0,.1)}
+.tank-mock::before{content:'';position:absolute;inset:18px;border-radius:50%;border:2px dashed rgba(245,168,0,.4)}
+.tank-mock svg{width:55%;fill:var(--navy);opacity:.85}
+.wb{position:absolute;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:13px 16px;display:flex;align-items:center;gap:10px;border-left:3px solid var(--yellow)}
+.wb svg{width:20px;height:20px;fill:var(--yellow-dark);flex-shrink:0}
+.wb strong{display:block;font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--dark)}
+.wb span{font-size:.72rem;color:var(--muted)}
+.wb1{top:8%;left:-5%}
+.wb2{bottom:10%;right:-4%}
+.why-list{margin-top:28px;display:flex;flex-direction:column;gap:18px}
+.why-item{display:flex;gap:15px;align-items:flex-start}
+.why-chk{width:30px;height:30px;flex-shrink:0;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.why-chk svg{width:15px;height:15px;fill:var(--navy)}
+.why-item h4{font-family:var(--font-display);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:3px}
+.why-item p{font-size:.88rem;color:var(--muted);font-weight:300}
+
+/* ==========================================================
+   PRODUCTS
+   ========================================================== */
+.products{padding:76px 0}
+.prod-tabs{display:flex;gap:6px;margin:28px 0 36px;flex-wrap:wrap}
+.tab-btn{padding:9px 20px;border-radius:100px;font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);background:var(--off-white);border:1.5px solid var(--border);cursor:pointer;transition:var(--transition)}
+.tab-btn:hover,.tab-btn.active{background:var(--yellow);color:var(--navy);border-color:var(--yellow)}
+.prod-panel{display:none}
+.prod-panel.active{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.prod-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column}
+.prod-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--yellow)}
+.prod-img{height:190px;background:var(--yellow-pale);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
+.prod-img svg{width:84px;height:84px;fill:var(--yellow-dark);opacity:.55;transition:transform .3s,opacity .3s}
+.prod-card:hover .prod-img svg{opacity:.8;transform:scale(1.08)}
+.prod-badge{position:absolute;top:11px;left:11px;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:100px;color:var(--white)}
+.badge-pop{background:var(--yellow-dark);color:var(--navy)}
+.badge-new{background:var(--green)}
+.badge-hot{background:var(--red)}
+.prod-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.prod-cap{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--yellow-dark);margin-bottom:3px}
+.prod-name{font-family:var(--font-display);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.03em;color:var(--dark);margin-bottom:7px;line-height:1.2}
+.prod-desc{font-size:.81rem;color:var(--muted);margin-bottom:14px;font-weight:300;line-height:1.5;flex:1}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.prod-price{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--navy)}
+.prod-actions{display:flex;gap:6px;flex-wrap:wrap}
+/* add to cart small icon button */
+.add-cart-btn{width:34px;height:34px;border-radius:var(--radius);border:1.5px solid var(--yellow);background:var(--yellow-pale);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);flex-shrink:0}
+.add-cart-btn:hover{background:var(--yellow)}
+.add-cart-btn svg{width:16px;height:16px;fill:var(--yellow-dark)}
+.add-cart-btn:hover svg{fill:var(--navy)}
+/* order now btn */
+.order-btn{padding:8px 14px;font-size:.78rem}
+
+/* ==========================================================
+   ORDER ONLINE
+   ========================================================== */
+.order-online{background:var(--yellow-pale);border-top:3px solid var(--yellow);padding:76px 0}
+.oo-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.order-steps{display:flex;flex-direction:column;margin-top:24px}
+.o-step{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border)}
+.o-step:last-child{border-bottom:none}
+.step-n{width:42px;height:42px;flex-shrink:0;background:var(--yellow);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:1.1rem}
+.step-t h4{font-family:var(--font-display);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:3px}
+.step-t p{font-size:.86rem;color:var(--muted);font-weight:300}
+.pay-box{background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-md);border:1.5px solid var(--yellow)}
+.pay-box h3{font-family:var(--font-display);font-weight:800;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:22px}
+.pay-methods{display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+.pay-m{display:flex;align-items:center;gap:13px;padding:14px 16px;background:var(--off-white);border-radius:var(--radius);border:1.5px solid var(--border)}
+.pay-m svg{width:28px;height:28px;fill:var(--yellow-dark);flex-shrink:0}
+.pay-m strong{display:block;font-family:var(--font-display);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--dark)}
+.pay-m span{font-size:.78rem;color:var(--muted)}
+.pay-note{font-size:.81rem;color:var(--mid);line-height:1.6;background:var(--yellow-pale);border-radius:var(--radius);padding:13px;border-left:3px solid var(--yellow)}
+
+/* ==========================================================
+   STATS
+   ========================================================== */
+.stats{background:var(--dark);padding:68px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:var(--radius);overflow:hidden}
+.stat-item{background:var(--dark);padding:44px 28px;text-align:center}
+.stat-num{font-family:var(--font-display);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:800;color:var(--white);letter-spacing:-.01em;line-height:1}
+.stat-num em{color:var(--yellow);font-style:normal}
+.stat-lbl{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:8px;text-transform:uppercase;letter-spacing:.09em;font-weight:500}
+
+/* ==========================================================
+   TESTIMONIALS
+   ========================================================== */
+.testimonials{padding:76px 0;background:var(--off-white)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.testi-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:26px;transition:var(--transition);border-top:3px solid var(--border)}
+.testi-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-top-color:var(--yellow)}
+.testi-stars{display:flex;gap:3px;margin-bottom:14px}
+.testi-stars svg{width:15px;height:15px;fill:var(--yellow)}
+.testi-text{font-size:.92rem;color:var(--mid);line-height:1.7;margin-bottom:18px;font-weight:300;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:11px;padding-top:14px;border-top:1px solid var(--border)}
+.testi-av{width:40px;height:40px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;color:var(--navy);font-family:var(--font-display);font-weight:700;font-size:.95rem;flex-shrink:0}
+.testi-info strong{display:block;font-family:var(--font-display);font-weight:700;font-size:.87rem;text-transform:uppercase;letter-spacing:.04em}
+.testi-info span{font-size:.76rem;color:var(--muted)}
+
+/* ==========================================================
+   CONTACT
+   ========================================================== */
+.contact{padding:76px 0}
+.contact-inner{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;margin-top:44px}
+.contact-cards{display:flex;flex-direction:column;gap:18px}
+.cc{display:flex;gap:14px;align-items:flex-start;padding:18px;background:var(--off-white);border-radius:var(--radius);border:1.5px solid var(--border);border-left:3px solid var(--yellow)}
+.cc-icon{width:42px;height:42px;background:var(--yellow);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cc-icon svg{width:20px;height:20px;fill:var(--navy)}
+.cc h4{font-family:var(--font-display);font-weight:700;font-size:.87rem;text-transform:uppercase;letter-spacing:.06em;color:var(--dark);margin-bottom:4px}
+.cc p,.cc a{font-size:.88rem;color:var(--muted);font-weight:300}
+.cc a:hover{color:var(--yellow-dark)}
+.contact-form{background:var(--white);border-radius:var(--radius-lg);padding:34px;border:1.5px solid var(--border);box-shadow:var(--shadow-sm)}
+.contact-form h3{font-family:var(--font-display);font-weight:800;font-size:1.4rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:22px;border-bottom:3px solid var(--yellow);padding-bottom:14px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf-group{margin-bottom:14px}
+.cf-group label{display:block;font-family:var(--font-display);font-weight:600;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.cf-group input,.cf-group select,.cf-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:.9rem;color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s}
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(245,168,0,.15)}
+.cf-group textarea{resize:vertical;min-height:100px}
+
+/* ==========================================================
+   MAP
+   ========================================================== */
+.map-strip{height:260px;background:linear-gradient(135deg,var(--yellow-pale) 0%,#ffe8a0 100%);display:flex;align-items:center;justify-content:center;border-top:3px solid var(--yellow)}
+.map-placeholder{text-align:center;color:var(--yellow-dark)}
+.map-placeholder svg{width:44px;height:44px;fill:currentColor;opacity:.5;margin:0 auto 10px}
+.map-placeholder p{font-family:var(--font-display);font-weight:700;font-size:.9rem;letter-spacing:.07em;text-transform:uppercase;opacity:.6}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+footer{background:var(--navy);color:rgba(255,255,255,.65);padding:60px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:44px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.foot-logo .logo-mark{background:rgba(255,255,255,.1)}
+.foot-logo .logo-text strong{color:var(--white)}
+.foot-desc{font-size:.86rem;line-height:1.7;font-weight:300;margin-bottom:22px;max-width:270px}
+.foot-socials{display:flex;gap:9px}
+.soc-btn{width:34px;height:34px;border-radius:6px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);transition:var(--transition)}
+.soc-btn:hover{background:var(--yellow);color:var(--navy)}
+.soc-btn svg{width:15px;height:15px;fill:currentColor}
+.foot-certs{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap}
+.cert{padding:6px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.foot-col h4{font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--yellow);display:inline-block}
+.foot-links{display:flex;flex-direction:column;gap:9px}
+.foot-links a{font-size:.86rem;font-weight:300;transition:color .2s;display:flex;align-items:center;gap:6px}
+.foot-links a::before{content:'›';color:var(--yellow);font-size:1rem;opacity:0;transition:opacity .2s}
+.foot-links a:hover{color:var(--white)}
+.foot-links a:hover::before{opacity:1}
+.foot-contact-list{display:flex;flex-direction:column;gap:13px}
+.fci{display:flex;gap:9px;align-items:flex-start}
+.fci svg{width:14px;height:14px;fill:var(--yellow);flex-shrink:0;margin-top:2px}
+.fci span{font-size:.84rem;font-weight:300;line-height:1.5}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 0;font-size:.78rem;flex-wrap:wrap;gap:10px}
+.foot-bottom-links{display:flex;gap:18px}
+.foot-bottom-links a:hover{color:var(--white)}
+
+/* ==========================================================
+   FLOATING BUTTONS
+   ========================================================== */
+.floats{position:fixed;bottom:26px;right:26px;display:flex;flex-direction:column;gap:10px;z-index:800}
+.fl-btn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.22);transition:var(--transition);cursor:pointer;border:none;position:relative}
+.fl-btn:hover{transform:scale(1.1)}
+.fl-btn svg{width:24px;height:24px;fill:var(--white)}
+.fl-wa{background:#25D366}.fl-call{background:var(--yellow)}.fl-call svg{fill:var(--navy)}
+.fl-tip{position:absolute;right:calc(100% + 10px);background:var(--navy);color:var(--white);font-family:var(--font-display);font-size:.76rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:6px 11px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.fl-tip::after{content:'';position:absolute;left:100%;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:var(--navy)}
+.fl-btn:hover .fl-tip{opacity:1}
+
+/* Back to top */
+.back-top{position:fixed;bottom:26px;left:26px;width:42px;height:42px;background:var(--yellow);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:var(--transition);z-index:800;border:none;box-shadow:var(--shadow-md)}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{background:var(--yellow-dark);transform:translateY(-3px)}
+.back-top svg{width:18px;height:18px;fill:currentColor}
+
+/* ==========================================================
+   TOAST
+   ========================================================== */
+.toast-wrap{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none}
+.toast{background:var(--navy);color:var(--white);padding:12px 22px;border-radius:100px;font-family:var(--font-display);font-weight:600;font-size:.88rem;letter-spacing:.04em;border-left:4px solid var(--yellow);box-shadow:var(--shadow-lg);opacity:0;transform:translateY(12px);transition:all .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:none}
+
+/* ==========================================================
+   CUSTOM SECTION
+   ========================================================== */
+.custom-sec{padding:76px 0;background:var(--dark);position:relative;overflow:hidden}
+.custom-sec::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(60deg,rgba(245,168,0,.03) 0,rgba(245,168,0,.03) 1px,transparent 1px,transparent 28px)}
+.custom-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.custom-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:30px;text-align:center;transition:var(--transition)}
+.custom-card:hover{background:rgba(245,168,0,.06);border-color:rgba(245,168,0,.35);transform:translateY(-4px)}
+.custom-card-icon{width:52px;height:52px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.custom-card-icon svg{width:24px;height:24px;fill:var(--navy)}
+.custom-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--white);margin-bottom:10px}
+.custom-card p{font-size:.85rem;color:rgba(255,255,255,.5);font-weight:300;line-height:1.6}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media(max-width:1100px){
+  .cat-grid{grid-template-columns:repeat(3,1fr)}
+  .prod-panel.active{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .ben-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:860px){
+  .nav-links,.nav-right .btn{display:none}
+  .hamburger{display:flex}
+  .hero{max-height:580px}
+  .why-inner,.oo-inner,.contact-inner{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .topbar-l{display:none}
+  .hs-inner{flex-wrap:wrap}
+  .hs-item{min-width:50%;border-right:none;border-bottom:1px solid rgba(13,27,42,.12)}
+}
+@media(max-width:620px){
+  :root{--nav-h:60px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .prod-panel.active{grid-template-columns:1fr 1fr}
+  .ben-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .cf-row{grid-template-columns:1fr}
+  .ft-inner{flex-direction:column;text-align:center}
+  .hs-item{min-width:100%;border-bottom:1px solid rgba(13,27,42,.12)}
+  .custom-cards{grid-template-columns:1fr}
+  .mform-row{grid-template-columns:1fr}
+  .sl-arrow{display:none}
+  .hero{max-height:490px}
+}
+</style>
 </head>
 <body>
 
-<header>
-    <h1>TOP TANKS</h1>
-    <p>Quality Water Storage Tanks at Affordable Prices</p>
-</header>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-l" style="display:flex;gap:20px">
+      <a href="tel:+254722000000"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>+254 722 000 000</a>
+      <a href="mailto:info@toptank.co.ke"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>info@toptank.co.ke</a>
+    </div>
+    <div class="topbar-r">
+      <a href="#"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>Mon–Fri 8AM–5PM · Sat 9AM–1PM</a>
+      <a href="#"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Nairobi, Kenya</a>
+    </div>
+  </div>
+</div>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-</nav>
+<!-- NAV -->
+<div class="nav-wrap" id="navbar">
+  <div class="container">
+    <nav class="main-nav">
+      <a href="#" class="nav-logo" aria-label="TopTank Home">
+        <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7zm0 4.5A2.5 2.5 0 1 0 12 12a2.5 2.5 0 0 0 0-5z"/></svg></div>
+        <div class="logo-text"><strong>TOP</strong><span>TANK</span></div>
+      </a>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a class="nav-link active" href="#products">All Products <svg class="chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></a>
+          <div class="dropdown">
+            <a href="#products">Water Tanks</a><a href="#products">Agriculture</a>
+            <a href="#products">Bins & Containers</a><a href="#products">Road Safety</a><a href="#products">Sanitation</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#custom">Custom Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#why">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#products" class="btn btn-yellow" style="margin-right:6px">Shop Now</a>
+        <button class="cart-btn" id="cartToggle" aria-label="Shopping cart" title="View cart">
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 22 5H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2z"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>
 
-<section class="hero">
-    <h1>Reliable Water Tanks for Every Need</h1>
-    <p>Durable, affordable and delivered to your location.</p>
-    <a href="https://wa.me/254787030992" class="btn">Order on WhatsApp</a>
+<!-- MOBILE DRAWER -->
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-drawer" id="mobDrawer">
+  <div class="mob-head">
+    <div class="logo-text"><strong style="color:white">TOP</strong><span>TANK</span></div>
+    <button class="mob-close" id="mobClose"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+  <div class="mob-body">
+    <div class="mob-link" onclick="toggleMobSub(this)">All Products <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+    <div class="mob-sub"><a href="#products" onclick="closeMob()">Water Tanks</a><a href="#products" onclick="closeMob()">Agriculture</a><a href="#products" onclick="closeMob()">Road Safety</a></div>
+    <a class="mob-link" href="#custom" onclick="closeMob()">Custom Products</a>
+    <a class="mob-link" href="#why" onclick="closeMob()">About Us</a>
+    <a class="mob-link" href="#contact" onclick="closeMob()">Contact Us</a>
+  </div>
+  <div class="mob-foot">
+    <a href="#products" class="btn btn-yellow" style="justify-content:center" onclick="closeMob()">Shop Now</a>
+    <a href="tel:+254722000000" class="btn btn-outline-yellow" style="justify-content:center">Call Us</a>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Shopping cart">
+  <div class="cart-head">
+    <h2><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 22 5H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2z"/></svg>Your Cart</h2>
+    <button class="cart-close" id="cartClose"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 22 5H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2z"/></svg>
+      <p>Your cart is empty</p>
+      <span>Add products to get started</span>
+    </div>
+    <div id="cartItems"></div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSub">KSh 0</span></div>
+    <div class="cart-subtotal"><span>Delivery</span><span style="color:var(--green);font-weight:600">FREE</span></div>
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amt" id="cartTotal">KSh 0</span>
+    </div>
+    <div class="cart-actions">
+      <button class="btn btn-yellow" style="width:100%;justify-content:center;font-size:.95rem" onclick="checkoutCart()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        Checkout (Order Now)
+      </button>
+      <button class="btn btn-outline-yellow" style="width:100%;justify-content:center;font-size:.9rem" onclick="clearCart()">Clear Cart</button>
+    </div>
+    <p class="cart-note">Free delivery within Nairobi, Mombasa, Kisumu, Nakuru & Eldoret. Call us for rural delivery rates.</p>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal" id="orderModalBox">
+    <div class="modal-head">
+      <h3>Place Your <span>Order</span></h3>
+      <button class="modal-close" onclick="closeModal()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- filled by JS -->
+    </div>
+    <div class="modal-foot" id="modalFoot">
+      <button class="btn btn-yellow" style="width:100%;justify-content:center;font-size:.95rem" onclick="submitOrder()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        Confirm Order
+      </button>
+      <button class="btn btn-outline-yellow" style="width:100%;justify-content:center;font-size:.9rem" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="slide active s1">
+    <div class="slide-bg"></div>
+    <div class="slide-content"><div class="container">
+      <div class="s-eyebrow">Kenya's #1 Water Storage Solution</div>
+      <h1 class="s-head">Kwa Mahitaji Yako<br><em>Yote Ya Maji</em></h1>
+      <p class="s-desc">Double-layered, UV-protected tanks 100L–24,000L. Food-grade polyethylene. Made in Kenya.</p>
+      <div class="s-cta"><a href="#products" class="btn btn-yellow">Shop Tanks</a><a href="#contact" class="btn btn-outline-white">Get a Quote</a></div>
+    </div></div>
+  </div>
+  <div class="slide s2">
+    <div class="slide-bg"></div>
+    <div class="slide-content"><div class="container">
+      <div class="s-eyebrow">Agricultural Solutions</div>
+      <h1 class="s-head">For All Your<br><em>Agricultural</em> Needs</h1>
+      <p class="s-desc">Tanks, bowsers and troughs for Kenyan farms — built for the field.</p>
+      <div class="s-cta"><a href="#products" class="btn btn-yellow">View Agriculture</a><a href="#contact" class="btn btn-outline-white">Get a Quote</a></div>
+    </div></div>
+  </div>
+  <div class="slide s3">
+    <div class="slide-bg"></div>
+    <div class="slide-content"><div class="container">
+      <div class="s-eyebrow">Road Safety Products</div>
+      <h1 class="s-head">Kenya's #1<br><em>Road Barriers</em><br>& Traffic Cones</h1>
+      <p class="s-desc">High-visibility equipment trusted by KURA contractors across Kenya.</p>
+      <div class="s-cta"><a href="#products" class="btn btn-yellow">Shop Road Safety</a><a href="#contact" class="btn btn-outline-white">Get a Quote</a></div>
+    </div></div>
+  </div>
+  <div class="slide s4">
+    <div class="slide-bg"></div>
+    <div class="slide-content"><div class="container">
+      <div class="s-eyebrow">Custom Rotomoulding</div>
+      <h1 class="s-head">Your Shape,<br><em>Our Expertise</em></h1>
+      <p class="s-desc">Bespoke rotomoulded products built to your exact specifications.</p>
+      <div class="s-cta"><a href="#custom" class="btn btn-yellow">Enquire Now</a><a href="#why" class="btn btn-outline-white">Why TopTank?</a></div>
+    </div></div>
+  </div>
+  <button class="sl-arrow sl-prev" id="slPrev"><svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></button>
+  <button class="sl-arrow sl-next" id="slNext"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></button>
+  <div class="sl-dots">
+    <button class="sl-dot active" data-s="0"></button>
+    <button class="sl-dot" data-s="1"></button>
+    <button class="sl-dot" data-s="2"></button>
+    <button class="sl-dot" data-s="3"></button>
+  </div>
 </section>
 
-<section class="products">
-    <h2>Popular Tanks</h2>
+<!-- HERO STRIP -->
+<div class="hero-strip">
+  <div class="hs-inner container">
+    <div class="hs-item"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg><div><strong>Free Delivery</strong><span>Major towns Kenya-wide</span></div></div>
+    <div class="hs-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><div><strong>10-Year Warranty</strong><span>On all water tanks</span></div></div>
+    <div class="hs-item"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><div><strong>Expert Support</strong><span>Technical team on call</span></div></div>
+    <div class="hs-item"><svg viewBox="0 0 24 24"><path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zM11.5 1L2 6v2h19V6l-9.5-5z"/></svg><div><strong>Made in Kenya</strong><span>100% locally manufactured</span></div></div>
+  </div>
+</div>
 
-    <div class="card">
-        <h3>500 Litres</h3>
-        <p>Perfect for homes and small businesses.</p>
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">Browse by Category</span>
+      <h2 class="section-title">Our <span>Product</span> Range</h2>
+      <p class="section-sub">Every product engineered for durability in the Kenyan environment.</p>
     </div>
-
-    <div class="card">
-        <h3>1000 Litres</h3>
-        <p>Reliable water storage solution.</p>
+    <div class="cat-grid">
+      <a href="#products" class="cat-card reveal" data-d="1"><div class="cat-icon-bg"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 0 14A7 7 0 0 1 12 2zm0 2a5 5 0 1 0 0 10A5 5 0 0 0 12 4zM4 18h16v2H4v-2z"/></svg></div><div class="cat-lbl">Water Tanks</div></a>
+      <a href="#products" class="cat-card reveal" data-d="3"><div class="cat-icon-bg"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="cat-lbl">Agriculture</div></a>
+      <a href="#products" class="cat-card reveal" data-d="4"><div class="cat-icon-bg"><svg viewBox="0 0 24 24"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3z"/></svg></div><div class="cat-lbl">Bins</div></a>
+      <a href="#products" class="cat-card reveal" data-d="5"><div class="cat-icon-bg"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/><path d="M1 21h22v2H1z"/></svg></div><div class="cat-lbl">Road Safety</div></a>
+      <a href="#products" class="cat-card reveal" data-d="6"><div class="cat-icon-bg"><svg viewBox="0 0 24 24"><path d="M19.5 3.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5zM19 19.09H5V4.91h14v14.18z"/></svg></div><div class="cat-lbl">Miscellaneous</div></a>
     </div>
-
-    <div class="card">
-        <h3>2300 Litres</h3>
-        <p>Ideal for larger households and farms.</p>
-    </div>
+  </div>
 </section>
 
+<!-- FIND A TANK -->
+<div class="find-tank">
+  <div class="container">
+    <div class="ft-inner">
+      <div class="ft-text reveal-l">
+        <h2>Looking For A <em>Water Tank?</em></h2>
+        <p>You've come to the right place. Large range of tanks — buy online with free delivery!</p>
+      </div>
+      <a href="#products" class="btn btn-yellow reveal-r" style="font-size:1rem;padding:15px 36px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        Find a Tank
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="container">
+    <div class="ben-grid">
+      <div class="ben-item reveal" data-d="1"><div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm-7 9.09L5 12l7 3.82L19 12v.09l-7 3.82-7-3.82z"/></svg></div><h3>UV Protection</h3><p>UV-stabilised polyethylene withstands Kenya's intense equatorial sun for years.</p></div>
+      <div class="ben-item reveal" data-d="2"><div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg></div><h3>Free Delivery</h3><p>Free delivery to Nairobi, Mombasa, Kisumu, Nakuru, Eldoret and more.</p></div>
+      <div class="ben-item reveal" data-d="3"><div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><h3>Food-Grade Quality</h3><p>Manufactured with food-grade polyethylene meeting international safety standards.</p></div>
+      <div class="ben-item reveal" data-d="4"><div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.28L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5V2.05z"/></svg></div><h3>Extreme Durability</h3><p>Designed to withstand chemical exposure and temperature extremes for decades.</p></div>
+      <div class="ben-item reveal" data-d="5"><div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zM11.5 1L2 6v2h19V6l-9.5-5z"/></svg></div><h3>Made in Kenya</h3><p>100% Kenyan manufactured — supporting local industry with a fast, responsive service.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-us" id="why">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-visual reveal-l">
+        <div class="tank-mock">
+          <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="100" cy="198" rx="72" ry="17" fill="#f5a800" opacity=".3"/>
+            <rect x="28" y="55" width="144" height="138" rx="72" fill="#0d1b2a"/>
+            <ellipse cx="100" cy="55" rx="72" ry="19" fill="#1a2e44"/>
+            <ellipse cx="100" cy="55" rx="55" ry="13" fill="#f5a800" opacity=".6"/>
+            <rect x="88" y="12" width="24" height="46" rx="8" fill="#1a2e44"/>
+            <circle cx="100" cy="12" r="10" fill="#f5a800"/>
+            <rect x="72" y="172" width="56" height="14" rx="5" fill="#1a2e44"/>
+            <line x1="28" y1="105" x2="172" y2="105" stroke="rgba(245,168,0,0.3)" stroke-width="1.5" stroke-dasharray="7 4"/>
+          </svg>
+        </div>
+        <div class="wb wb1"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><div><strong>10 Years</strong><span>Warranty</span></div></div>
+        <div class="wb wb2"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg><div><strong>KEBS Certified</strong><span>Quality Assured</span></div></div>
+      </div>
+      <div class="reveal-r">
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title">Why <span>TopTank</span>?</h2>
+        <p class="section-sub">Over 25 years as Kenya's most trusted water storage brand.</p>
+        <div class="why-list">
+          <div class="why-item"><div class="why-chk"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div><h4>Hygiene First</h4><p>Food-grade inner liner prevents algae growth for safe drinking water.</p></div></div>
+          <div class="why-item"><div class="why-chk"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div><h4>Double-Layer Technology</h4><p>Patented dual-wall construction keeps water cooler and adds structural strength.</p></div></div>
+          <div class="why-item"><div class="why-chk"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div><h4>Widest Range in Kenya</h4><p>From 100L household tanks to 24,000L industrial solutions.</p></div></div>
+          <div class="why-item"><div class="why-chk"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div><h4>200+ Dealer Network</h4><p>Authorised dealers across all 47 counties of Kenya.</p></div></div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#products" class="btn btn-yellow">Shop Now</a>
+          <a href="#contact" class="btn btn-outline-yellow">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">Featured Products</span>
+      <h2 class="section-title">Our <span>Best Sellers</span></h2>
+      <p class="section-sub">All tanks include free delivery within major towns. Click "Order Now" to place your order instantly.</p>
+    </div>
+    <div class="prod-tabs">
+      <button class="tab-btn active" data-tab="tanks">Water Tanks</button>
+      <button class="tab-btn" data-tab="agri">Agriculture</button>
+      <button class="tab-btn" data-tab="road">Road Safety</button>
+      <button class="tab-btn" data-tab="custom-tab">Custom</button>
+    </div>
+
+    <!-- WATER TANKS -->
+    <div class="prod-panel active" id="tab-tanks" data-panel>
+      <div class="prod-card reveal" data-d="1">
+        <div class="prod-img"><span class="prod-badge badge-pop">Popular</span><img src="https://www.toptank.com/wp-content/uploads/2021/04/TANKS-1-4-scaled-1-e1617825299668-99-500x500.jpeg" alt="Product image 1" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">500 Litres</div><div class="prod-name">Deluxe Cylindrical Tank</div><div class="prod-desc">Double-layer UV-resistant household tank. Includes all fittings.</div>
+        <div class="prod-footer"><span class="prod-price">KSh 8,500</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Deluxe Cylindrical Tank','500L',8500,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Deluxe Cylindrical Tank','500 Litres',8500)">Order Now</button></div></div></div>
+      </div>
+      <div class="prod-card reveal" data-d="2">
+        <div class="prod-img"><span class="prod-badge badge-hot">Best Seller</span><img src="https://www.toptank.com/wp-content/uploads/2021/04/TANKS-1-4-scaled-1-e1617825299668-69-500x500.jpeg" alt="Product image 2" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">1,000 Litres</div><div class="prod-name">Standard Cylindrical Tank</div><div class="prod-desc">Most popular home size. Food-grade poly with UV protection.</div>
+        <div class="prod-footer"><span class="prod-price">KSh 14,800</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Standard Cylindrical Tank','1,000L',14800,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Standard Cylindrical Tank','1,000 Litres',14800)">Order Now</button></div></div></div>
+      </div>
+      <div class="prod-card reveal" data-d="3">
+        <div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/04/TANKS-1-4-scaled-1-e1617825299668-101-500x500.jpeg" alt="Product image 3" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">2,000 Litres</div><div class="prod-name">Deluxe Cylindrical Tank</div><div class="prod-desc">For small apartment blocks. Double-layer, slimline design.</div>
+        <div class="prod-footer"><span class="prod-price">KSh 26,500</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Deluxe Cylindrical 2000L','2,000L',26500,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Deluxe Cylindrical Tank','2,000 Litres',26500)">Order Now</button></div></div></div>
+      </div>
+      <div class="prod-card reveal" data-d="4">
+        <div class="prod-img"><span class="prod-badge badge-pop">Popular</span><img src="https://www.toptank.com/wp-content/uploads/2021/04/TANKS-1-4-scaled-1-e1617825299668-109-500x500.jpeg" alt="Product image 4" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">5,000 Litres</div><div class="prod-name">Commercial Grade Tank</div><div class="prod-desc">For schools, hotels, commercial properties. Heavy-duty construction.</div>
+        <div class="prod-footer"><span class="prod-price">KSh 58,000</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Commercial Grade Tank 5000L','5,000L',58000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Commercial Grade Tank','5,000 Litres',58000)">Order Now</button></div></div></div>
+      </div>
+      <div class="prod-card reveal" data-d="1">
+        <div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/05/LACREC05_Black_1-9-500x500.jpg" alt="Product image 5" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">10,000 Litres</div><div class="prod-name">Loft / Elevated Tank</div><div class="prod-desc">For elevated installation — gravity-fed pressure. Reinforced base.</div>
+        <div class="prod-footer"><span class="prod-price">KSh 110,000</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Loft Elevated Tank 10000L','10,000L',110000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Loft / Elevated Tank','10,000 Litres',110000)">Order Now</button></div></div></div>
+      </div>
+      <div class="prod-card reveal" data-d="2">
+        <div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/04/TANKS-1-4-scaled-1-e1617825299668-116-500x500.jpeg" alt="Product image 6" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">15,000 Litres</div><div class="prod-name">Industrial Storage Tank</div><div class="prod-desc">For large farms, factories, estates. Professional installation available.</div>
+        <div class="prod-footer"><span class="prod-price">KSh 165,000</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Industrial Storage Tank 15000L','15,000L',165000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Industrial Storage Tank','15,000 Litres',165000)">Order Now</button></div></div></div>
+      </div>
+      <div class="prod-card reveal" data-d="3">
+        <div class="prod-img"><span class="prod-badge badge-new">New</span><img src="https://www.toptank.com/wp-content/uploads/2021/04/LACNES01_Black_1-scaled-e1621254777975-500x500.jpg" alt="Product image 7" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">24,000 Litres</div><div class="prod-name">Mega Industrial Tank</div><div class="prod-desc">Kenya's largest rotomoulded tank — for water utilities and major infrastructure.</div>
+        <div class="prod-footer"><span class="prod-price">KSh 290,000</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Mega Industrial Tank 24000L','24,000L',290000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Mega Industrial Tank','24,000 Litres',290000)">Order Now</button></div></div></div>
+      </div>
+      <div class="prod-card reveal" data-d="4">
+        <div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/04/TANKS-1-4-scaled-1-e1617825299668-63-500x500.jpeg" alt="Product image 8" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="prod-body"><div class="prod-cap">100–250 Litres</div><div class="prod-name">Household Starter Tank</div><div class="prod-desc">Compact and affordable for single households. Lightweight and easy to move.</div>
+        <div class="prod-footer"><span class="prod-price">From KSh 2,800</span><div class="prod-actions"><button class="add-cart-btn" title="Add to cart" onclick="addToCart('Household Starter Tank','100–250L',2800,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button>
+        <button class="btn btn-yellow btn-sm order-btn" onclick="openOrder('Household Starter Tank','100–250 Litres',2800)">Order Now</button></div></div></div>
+      </div>
+    </div>
+
+    <!-- AGRI -->
+    <div class="prod-panel" id="tab-agri" data-panel>
+      <div class="prod-card"><div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/05/canonical-500x500-1-500x500.jpg" alt="Product image 13" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">1,000 Litres</div><div class="prod-name">Sprayer Tank</div><div class="prod-desc">Chemical-resistant for pesticide/herbicide storage. Anti-slosh baffles.</div><div class="prod-footer"><span class="prod-price">KSh 18,500</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Sprayer Tank 1000L','1,000L',18500,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Sprayer Tank','1,000 Litres',18500)">Order Now</button></div></div></div></div>
+      <div class="prod-card"><div class="prod-img"><span class="prod-badge badge-pop">Popular</span><img src="https://www.toptank.com/wp-content/uploads/2021/05/canonical-500x500-1-500x500.jpg" alt="Product image 14" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">5,000 Litres</div><div class="prod-name">Water Bowser Tank</div><div class="prod-desc">Transport water across your farm. Conical base for full drainage. Truck-ready.</div><div class="prod-footer"><span class="prod-price">KSh 62,000</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Water Bowser Tank 5000L','5,000L',62000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Water Bowser Tank','5,000 Litres',62000)">Order Now</button></div></div></div></div>
+      <div class="prod-card"><div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/05/canonical-500x500-1-500x500.jpg" alt="Product image 15" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">500 Litres</div><div class="prod-name">Animal Drinking Trough</div><div class="prod-desc">Low-profile trough for cattle, sheep, and goats. Durable, easy to clean.</div><div class="prod-footer"><span class="prod-price">KSh 12,000</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Animal Drinking Trough 500L','500L',12000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Animal Drinking Trough','500 Litres',12000)">Order Now</button></div></div></div></div>
+      <div class="prod-card"><div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/05/canonical-500x500-1-500x500.jpg" alt="Product image 16" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">10,000 Litres</div><div class="prod-name">Irrigation Reservoir</div><div class="prod-desc">Large-capacity for drip or sprinkler irrigation systems on farms.</div><div class="prod-footer"><span class="prod-price">KSh 118,000</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Irrigation Reservoir 10000L','10,000L',118000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Irrigation Reservoir','10,000 Litres',118000)">Order Now</button></div></div></div></div>
+    </div>
+
+    <!-- ROAD SAFETY -->
+    <div class="prod-panel" id="tab-road" data-panel>
+      <div class="prod-card"><div class="prod-img"><img src="https://www.toptank.com/wp-content/uploads/2021/05/Road-Traffic-Cone_2-500x500.png" alt="Product image 15" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">750mm Height</div><div class="prod-name">Traffic Cone – Standard</div><div class="prod-desc">High-visibility orange cones. KURA approved for road works.</div><div class="prod-footer"><span class="prod-price">KSh 1,800</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Traffic Cone Standard','750mm',1800,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Traffic Cone – Standard','750mm',1800)">Order Now</button></div></div></div></div>
+      <div class="prod-card"><div class="prod-img"><span class="prod-badge badge-pop">Popular</span><img src="https://www.toptank.com/wp-content/uploads/2021/05/Road-Barrier_1-e1621257362148-500x500.png" alt="Product image 15" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">1,200mm</div><div class="prod-name">Road Water Barrier</div><div class="prod-desc">Water-fillable LLDPE barrier. Stackable when empty. Easy to deploy.</div><div class="prod-footer"><span class="prod-price">KSh 22,000</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Road Water Barrier','1,200mm',22000,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Road Water Barrier','1,200mm',22000)">Order Now</button></div></div></div></div>
+      <div class="prod-card"><div class="prod-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3WXjatVexnkJ2eE4z2_X4kDRYkoW3sF-l3w&s" alt="Product image 15" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">500mm</div><div class="prod-name">Speed Hump – Heavy Duty</div><div class="prod-desc">Modular speed humps for estates, schools, and car parks.</div><div class="prod-footer"><span class="prod-price">KSh 3,500</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Speed Hump Heavy Duty','500mm',3500,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Speed Hump – Heavy Duty','500mm',3500)">Order Now</button></div></div></div></div>
+      <div class="prod-card"><div class="prod-img"><img src="https://www.safetysign.com/images/source/medium-images/M3100.jpg" alt="Product image 15" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="prod-body"><div class="prod-cap">600mm</div><div class="prod-name">Safety Warning Sign</div><div class="prod-desc">High-visibility reflective signs for hazards, diversions, and road works.</div><div class="prod-footer"><span class="prod-price">KSh 4,200</span><div class="prod-actions"><button class="add-cart-btn" onclick="addToCart('Safety Warning Sign','600mm',4200,this)"><svg viewBox="0 0 24 24"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63z"/></svg></button><button class="btn btn-yellow btn-sm" onclick="openOrder('Safety Warning Sign','600mm',4200)">Order Now</button></div></div></div></div>
+    </div>
+
+    <!-- CUSTOM TAB -->
+    <div class="prod-panel" id="tab-custom-tab" data-panel>
+      <div class="prod-card" style="grid-column:1/-1;display:grid;grid-template-columns:200px 1fr;gap:0;min-height:220px">
+        <div class="prod-img" style="height:auto;border-radius:var(--radius) 0 0 var(--radius)"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div>
+        <div class="prod-body" style="padding:32px"><div class="prod-cap">Bespoke Solutions</div><div class="prod-name">Custom Rotomoulding</div><div class="prod-desc" style="font-size:.9rem">Have a unique requirement? Our team designs and manufactures products to your exact specifications — shapes, sizes, colours, fittings, branding. Ideal for OEM, special projects, and government tenders.</div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-yellow" onclick="openOrder('Custom Rotomoulding Solution','Bespoke',0)">Request Custom Order</button><a href="#contact" class="btn btn-outline-yellow">Contact Team</a></div></div>
+      </div>
+    </div>
+
+    <div class="text-center reveal" style="margin-top:36px">
+      <a href="#" class="btn btn-outline-yellow" style="font-size:.95rem;padding:13px 34px">View All Products →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER ONLINE -->
+<section class="order-online" id="order">
+  <div class="container">
+    <div class="oo-inner">
+      <div class="reveal-l">
+        <span class="section-tag">Easy Online Ordering</span>
+        <h2 class="section-title">Order Your <span>Tank</span> Online</h2>
+        <p class="section-sub">TopTank is one of the first tank manufacturers in Kenya to offer full online purchasing.</p>
+        <div class="order-steps">
+          <div class="o-step"><div class="step-n">1</div><div class="step-t"><h4>Browse & Select</h4><p>Choose your tank size and click "Order Now" on any product.</p></div></div>
+          <div class="o-step"><div class="step-n">2</div><div class="step-t"><h4>Fill Order Form</h4><p>Enter your name, phone, and delivery location in seconds.</p></div></div>
+          <div class="o-step"><div class="step-n">3</div><div class="step-t"><h4>We Confirm</h4><p>Our team calls you within 2 hours to confirm and arrange payment.</p></div></div>
+          <div class="o-step"><div class="step-n">4</div><div class="step-t"><h4>Free Delivery</h4><p>We deliver free to your doorstep within most major Kenyan towns.</p></div></div>
+        </div>
+      </div>
+      <div class="pay-box reveal-r">
+        <h3>Accepted Payment Methods</h3>
+        <div class="pay-methods">
+          <div class="pay-m"><svg viewBox="0 0 24 24"><path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm-5 20c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5-4H7V4h10v13z"/></svg><div><strong>M-Pesa</strong><span>Paybill or Till Number</span></div></div>
+          <div class="pay-m"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg><div><strong>Visa / Mastercard</strong><span>Secure card payment</span></div></div>
+          <div class="pay-m"><svg viewBox="0 0 24 24"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2z"/></svg><div><strong>Bank Transfer / Cheque</strong><span>For large orders and tenders</span></div></div>
+        </div>
+        <div class="pay-note"><strong>Free delivery</strong> within Nairobi, Mombasa, Kisumu, Nakuru, Eldoret and other major towns. Rural delivery rates on request.</div>
+        <div style="margin-top:20px"><a href="#products" class="btn btn-yellow" style="width:100%;justify-content:center">Shop Now →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal" data-d="1"><div class="stat-num" id="s1">25<em>+</em></div><div class="stat-lbl">Years in Business</div></div>
+      <div class="stat-item reveal" data-d="2"><div class="stat-num" id="s2">500<em>K+</em></div><div class="stat-lbl">Tanks Delivered</div></div>
+      <div class="stat-item reveal" data-d="3"><div class="stat-num" id="s3">200<em>+</em></div><div class="stat-lbl">Dealer Outlets</div></div>
+      <div class="stat-item reveal" data-d="4"><div class="stat-num" id="s4">47</div><div class="stat-lbl">Counties Served</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM -->
+<section class="custom-sec" id="custom">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag" style="background:rgba(245,168,0,.12);color:var(--yellow);border-color:rgba(245,168,0,.3)">Custom Rotomoulding</span>
+      <h2 class="section-title" style="color:white">Bespoke Solutions<br>For <span>Every Industry</span></h2>
+    </div>
+    <div class="custom-cards">
+      <div class="custom-card reveal" data-d="1"><div class="custom-card-icon"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div><h3>Custom Shapes & Sizes</h3><p>Design any shape or capacity from scratch. Our CAD team brings your concept to life.</p></div>
+      <div class="custom-card reveal" data-d="2"><div class="custom-card-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div><h3>Custom Branding & Colour</h3><p>Products in your brand colours with moulded logos — perfect for OEM and private label.</p></div>
+      <div class="custom-card reveal" data-d="3"><div class="custom-card-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><h3>Government & Tender Ready</h3><p>Full compliance docs, KEBS certification, and capacity for large-scale government orders.</p></div>
+    </div>
+    <div class="text-center reveal" style="margin-top:36px">
+      <button class="btn btn-yellow" style="font-size:1rem;padding:14px 38px" onclick="openOrder('Custom Rotomoulding Solution','Bespoke',0)">Request Custom Quote</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">Customer Reviews</span>
+      <h2 class="section-title">What Our <span>Customers</span> Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal" data-d="1"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testi-text">"I've used TopTank on my Nakuru farm for over 10 years. The quality is unmatched — my 10,000L tank has never given me any problems despite being in the sun every day."</p><div class="testi-author"><div class="testi-av">JK</div><div class="testi-info"><strong>James Kamau</strong><span>Farmer, Nakuru County</span></div></div></div>
+      <div class="testi-card reveal" data-d="2"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testi-text">"Ordered a 2,000L tank online, received it in 3 days in Mombasa. Free delivery as promised, crew was professional and helped position it. Very impressed!"</p><div class="testi-author"><div class="testi-av" style="background:var(--green)">AO</div><div class="testi-info"><strong>Amina Omar</strong><span>Homeowner, Mombasa</span></div></div></div>
+      <div class="testi-card reveal" data-d="3"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testi-text">"We fitted 15 road barriers from TopTank on a Kisumu project. Quality exceeded KURA standards and delivery was on schedule. Will use them again for future contracts."</p><div class="testi-author"><div class="testi-av" style="background:var(--blue)">PO</div><div class="testi-info"><strong>Peter Otieno</strong><span>Site Manager, Road Construction</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Contact <span>Us</span></h2>
+      <p class="section-sub">Have a question or need a quote? We typically respond within 2 hours on business days.</p>
+    </div>
+    <div class="contact-inner">
+      <div class="reveal-l">
+        <div class="contact-cards">
+          <div class="cc"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div><div><h4>Call Us</h4><a href="tel:+254722000000">+254 722 000 000</a><br><a href="tel:+254733000000">+254 733 000 000</a></div></div>
+          <div class="cc"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div><h4>Email</h4><a href="mailto:info@toptank.co.ke">info@toptank.co.ke</a><br><a href="mailto:sales@toptank.co.ke">sales@toptank.co.ke</a></div></div>
+          <div class="cc"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div><h4>Visit Factory</h4><p>Mombasa Road Industrial Area<br>Nairobi, Kenya</p></div></div>
+          <div class="cc"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div><div><h4>Business Hours</h4><p>Mon–Fri: 8:00 AM – 5:00 PM<br>Sat: 9:00 AM – 1:00 PM</p></div></div>
+        </div>
+      </div>
+      <div class="contact-form reveal-r">
+        <h3>Send Us a Message</h3>
+        <div class="cf-row">
+          <div class="cf-group"><label>First Name</label><input type="text" placeholder="John"></div>
+          <div class="cf-group"><label>Last Name</label><input type="text" placeholder="Kamau"></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-group"><label>Email</label><input type="email" placeholder="john@example.com"></div>
+          <div class="cf-group"><label>Phone</label><input type="tel" placeholder="+254 7XX XXX XXX"></div>
+        </div>
+        <div class="cf-group"><label>Product of Interest</label>
+          <select><option value="">Select category...</option><option>Water Tanks (100L–24,000L)</option><option>Agricultural Products</option><option>Road Safety</option><option>Custom Rotomoulding</option></select>
+        </div>
+        <div class="cf-group"><label>Message</label><textarea placeholder="Describe your requirements, capacity, delivery location, and quantity..."></textarea></div>
+        <button class="btn btn-yellow" style="width:100%;justify-content:center" onclick="cfSubmit(this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-strip"><div class="map-placeholder"><svg viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg><p>Nairobi, Kenya — Mombasa Road Industrial Area</p></div></div>
+
+<!-- FOOTER -->
 <footer>
-    <p>📞 Call/WhatsApp: 0787 030 992</p>
-    <p>&copy; 2026 Top Tanks. All Rights Reserved.</p>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="var(--yellow)"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/></svg></div><div class="logo-text"><strong>TOP</strong><span>TANK</span></div></div>
+        <p class="foot-desc">Kenya's #1 water tank manufacturer since 1999. Double-layered, UV-protected tanks from 100L to 24,000L. Made in Kenya, for Kenya.</p>
+        <div class="foot-socials">
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="var(--navy)"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--navy)"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+        <div class="foot-certs"><span class="cert">KEBS Certified</span><span class="cert">ISO 9001</span><span class="cert">Made in Kenya</span></div>
+      </div>
+      <div><h4>Products</h4><ul class="foot-links"><li><a href="#">Water Tanks</a></li><li><a href="#">Agricultural Tanks</a></li><li><a href="#">Water Bowsers</a></li><li><a href="#">Road Barriers</a></li><li><a href="#">Traffic Cones</a></li><li><a href="#">Custom Rotomoulding</a></li></ul></div>
+      <div><h4>Company</h4><ul class="foot-links"><li><a href="#">About TopTank</a></li><li><a href="#">Our Factory</a></li><li><a href="#">Quality Standards</a></li><li><a href="#">Dealer Network</a></li><li><a href="#">Careers</a></li><li><a href="#">FAQs</a></li><li><a href="#">Sitemap</a></li></ul></div>
+      <div><h4>Contact</h4><div class="foot-contact-list">
+        <div class="fci"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><span>+254 722 000 000<br>+254 733 000 000</span></div>
+        <div class="fci"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span>info@toptank.co.ke</span></div>
+        <div class="fci"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Mombasa Road Industrial Area<br>Nairobi, Kenya</span></div>
+      </div></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2024 TopTank Kenya. All rights reserved.</span>
+      <div class="foot-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Policy</a></div>
+    </div>
+  </div>
 </footer>
 
+<!-- FLOATS -->
+<div class="floats">
+  <a href="https://wa.me/254722000000?text=Hello%20TopTank%2C%20I%20need%20product%20information" target="_blank" rel="noopener" class="fl-btn fl-wa" aria-label="WhatsApp"><span class="fl-tip">Chat on WhatsApp</span><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+  <a href="tel:+254722000000" class="fl-btn fl-call" aria-label="Call us"><span class="fl-tip">Call Us Now</span><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></a>
+</div>
+<button class="back-top" id="backTop"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ---- STATE ----
+const cart = []; // [{id,name,cap,price,qty}]
+let modalCtx = null; // {name,cap,price}
+
+// ---- TOAST ----
+function showToast(msg){
+  const wrap=document.getElementById('toastWrap');
+  const t=document.createElement('div');t.className='toast';t.textContent=msg;
+  wrap.appendChild(t);requestAnimationFrame(()=>t.classList.add('show'));
+  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),350)},3000);
+}
+
+// ---- SLIDER ----
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.sl-dot');
+let cur=0,auto;
+function goTo(n){
+  slides[cur].classList.remove('active');dots[cur].classList.remove('active');
+  cur=(n+slides.length)%slides.length;
+  slides[cur].classList.add('active');dots[cur].classList.add('active');
+}
+function resetAuto(){clearInterval(auto);auto=setInterval(()=>goTo(cur+1),5500);}
+document.getElementById('slPrev').onclick=()=>{goTo(cur-1);resetAuto()};
+document.getElementById('slNext').onclick=()=>{goTo(cur+1);resetAuto()};
+dots.forEach(d=>d.addEventListener('click',()=>{goTo(+d.dataset.s);resetAuto()}));
+resetAuto();
+
+// ---- NAV SCROLL ----
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  navbar.classList.toggle('scrolled',scrollY>10);
+  document.getElementById('backTop').classList.toggle('show',scrollY>400);
+},{passive:true});
+document.getElementById('backTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+// ---- MOBILE MENU ----
+const ham=document.getElementById('hamburger');
+const mobD=document.getElementById('mobDrawer');
+const mobO=document.getElementById('mobOverlay');
+function openMob(){mobD.classList.add('open');mobO.classList.add('open');ham.classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){mobD.classList.remove('open');mobO.classList.remove('open');ham.classList.remove('open');document.body.style.overflow='';}
+ham.onclick=openMob;
+document.getElementById('mobClose').onclick=closeMob;
+mobO.onclick=closeMob;
+function toggleMobSub(el){const s=el.nextElementSibling;const a=el.querySelector('svg');s.classList.toggle('open');a.style.transform=s.classList.contains('open')?'rotate(180deg)':'';}
+
+// ---- CART SIDEBAR ----
+const cartToggle=document.getElementById('cartToggle');
+const cartOverlay=document.getElementById('cartOverlay');
+const cartDrawer=document.getElementById('cartDrawer');
+const cartClose=document.getElementById('cartClose');
+function openCart(){cartOverlay.classList.add('open');cartDrawer.classList.add('open');document.body.style.overflow='hidden';}
+function closeCart(){cartOverlay.classList.remove('open');cartDrawer.classList.remove('open');document.body.style.overflow='';}
+cartToggle.onclick=openCart;cartClose.onclick=closeCart;cartOverlay.onclick=closeCart;
+
+function renderCart(){
+  const countEl=document.getElementById('cartCount');
+  const bodyEl=document.getElementById('cartItems');
+  const emptyEl=document.getElementById('cartEmpty');
+  const footEl=document.getElementById('cartFoot');
+  const subEl=document.getElementById('cartSub');
+  const totalEl=document.getElementById('cartTotal');
+  const totalItems=cart.reduce((a,c)=>a+c.qty,0);
+  const totalAmt=cart.reduce((a,c)=>a+c.price*c.qty,0);
+  countEl.textContent=totalItems;
+  // bump animation
+  countEl.classList.add('bump');setTimeout(()=>countEl.classList.remove('bump'),300);
+  if(cart.length===0){emptyEl.style.display='';bodyEl.innerHTML='';footEl.style.display='none';}
+  else{
+    emptyEl.style.display='none';footEl.style.display='';
+    subEl.textContent='KSh '+totalAmt.toLocaleString();
+    totalEl.textContent='KSh '+totalAmt.toLocaleString();
+    bodyEl.innerHTML=cart.map((item,i)=>`
+      <div class="cart-item">
+        <div class="cart-item-icon"><svg viewBox="0 0 24 24" fill="none"><path fill="var(--yellow-dark)" d="M12 2a7 7 0 0 1 0 14A7 7 0 0 1 12 2zm0 2a5 5 0 1 0 0 10A5 5 0 0 0 12 4zM4 18h16v2H4v-2z"/></svg></div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-cap">${item.cap}</div>
+          <div class="cart-item-row">
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(${i},-1)">−</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+            </div>
+            <span class="cart-item-price">KSh ${(item.price*item.qty).toLocaleString()}</span>
+            <button class="cart-item-del" onclick="removeFromCart(${i})" title="Remove">
+              <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>`).join('');
+  }
+}
+function addToCart(name,cap,price,btn){
+  const existing=cart.find(c=>c.name===name&&c.cap===cap);
+  if(existing){existing.qty++;}
+  else{cart.push({name,cap,price,qty:1});}
+  renderCart();
+  showToast('✓ '+name+' added to cart');
+  // flash button
+  if(btn){btn.style.background='var(--green)';setTimeout(()=>btn.style.background='',700);}
+  openCart();
+}
+function removeFromCart(i){cart.splice(i,1);renderCart();}
+function changeQty(i,d){cart[i].qty=Math.max(1,cart[i].qty+d);renderCart();}
+function clearCart(){cart.length=0;renderCart();}
+function checkoutCart(){
+  if(!cart.length)return;
+  const items=cart.map(c=>`${c.qty}× ${c.name} (${c.cap}) @ KSh ${c.price.toLocaleString()}`).join(', ');
+  const total='KSh '+cart.reduce((a,c)=>a+c.price*c.qty,0).toLocaleString();
+  openOrderCart(items,total);
+}
+
+// ---- ORDER MODAL ----
+function openOrder(name,cap,price){
+  modalCtx={name,cap,price,qty:1};
+  buildModalSingle();
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function openOrderCart(items,total){
+  modalCtx={name:items,cap:'Multiple Items',price:0,total,isCart:true};
+  buildModalCart(items,total);
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('orderModal').classList.remove('open');
+  document.body.style.overflow='';
+  // reset
+  document.getElementById('modalFoot').style.display='';
+  document.getElementById('modalFoot').innerHTML=`
+    <button class="btn btn-yellow" style="width:100%;justify-content:center;font-size:.95rem" onclick="submitOrder()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>Confirm Order
+    </button>
+    <button class="btn btn-outline-yellow" style="width:100%;justify-content:center;font-size:.9rem" onclick="closeModal()">Cancel</button>`;
+}
+// click outside to close
+document.getElementById('orderModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+function buildModalSingle(){
+  const c=modalCtx;
+  const isCustom=c.price===0;
+  document.getElementById('modalBody').innerHTML=`
+    <div class="order-summary-box">
+      <h4>Order Summary</h4>
+      <div class="osb-row"><span class="osb-label">Product</span><span class="osb-val">${c.name}</span></div>
+      <div class="osb-row"><span class="osb-label">Capacity</span><span class="osb-val">${c.cap}</span></div>
+      ${!isCustom?`<div class="osb-row"><span class="osb-label">Unit Price</span><span class="osb-val">KSh ${c.price.toLocaleString()}</span></div>`:''}
+      <div class="osb-row"><span class="osb-label">Delivery</span><span class="osb-val" style="color:var(--green)">FREE</span></div>
+    </div>
+    ${!isCustom?`<div class="qty-selector">
+      <label>Quantity:</label>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="modalQty(-1)">−</button>
+        <span class="qty-val" id="mqty">1</span>
+        <button class="qty-btn" onclick="modalQty(1)">+</button>
+      </div>
+      <span style="margin-left:8px;font-family:var(--font-display);font-weight:700;color:var(--navy)" id="mtotal">KSh ${c.price.toLocaleString()}</span>
+    </div>`:''}
+    ${formFields()}
+    ${isCustom?'<div class="mform-group"><label>Project Description <span>*</span></label><textarea id="proj" placeholder="Describe your custom product requirements, shape, size, colour, quantity..."></textarea></div>':''}`;
+}
+function buildModalCart(items,total){
+  document.getElementById('modalBody').innerHTML=`
+    <div class="order-summary-box">
+      <h4>Cart Order Summary</h4>
+      <div class="osb-row"><span class="osb-label">Items</span><span class="osb-val" style="font-size:.82rem;text-align:right;max-width:240px">${items}</span></div>
+      <div class="osb-row"><span class="osb-label">Delivery</span><span class="osb-val" style="color:var(--green)">FREE</span></div>
+      <div class="osb-row"><span class="osb-label">Total</span><span class="osb-val">${total}</span></div>
+    </div>
+    ${formFields()}`;
+}
+function formFields(){
+  return `
+    <div class="mform-row">
+      <div class="mform-group"><label>Full Name <span>*</span></label><input id="oname" type="text" placeholder="e.g. John Kamau" required></div>
+      <div class="mform-group"><label>Phone Number <span>*</span></label><input id="ophone" type="tel" placeholder="+254 7XX XXX XXX" required></div>
+    </div>
+    <div class="mform-group"><label>Delivery Location <span>*</span></label><input id="oloc" type="text" placeholder="e.g. Westlands, Nairobi or Mombasa Town" required></div>
+    <div class="mform-group"><label>Additional Notes</label><textarea id="onotes" placeholder="Any special instructions, delivery time preference, etc." style="min-height:64px"></textarea></div>`;
+}
+function modalQty(d){
+  if(!modalCtx)return;
+  modalCtx.qty=Math.max(1,modalCtx.qty+d);
+  document.getElementById('mqty').textContent=modalCtx.qty;
+  document.getElementById('mtotal').textContent='KSh '+(modalCtx.price*modalCtx.qty).toLocaleString();
+}
+function submitOrder(){
+  const name=document.getElementById('oname')?.value.trim();
+  const phone=document.getElementById('ophone')?.value.trim();
+  const loc=document.getElementById('oloc')?.value.trim();
+  const notes=document.getElementById('onotes')?.value.trim();
+  if(!name||!phone||!loc){showToast('⚠ Please fill in all required fields');return;}
+  const c=modalCtx;
+  const isCustom=c.price===0&&!c.isCart;
+  const qty=c.qty||1;
+  const total=c.isCart?c.total:(isCustom?'To be quoted':'KSh '+(c.price*qty).toLocaleString());
+  const proj=document.getElementById('proj')?.value.trim()||'';
+  // Build WhatsApp message
+  let msg='🛒 *New Order – TopTank Kenya*%0A%0A';
+  msg+='*Product:* '+encodeURIComponent(c.name)+'%0A';
+  msg+='*Capacity:* '+encodeURIComponent(c.cap)+'%0A';
+  if(!c.isCart&&!isCustom) msg+='*Quantity:* '+qty+'%0A';
+  msg+='*Total:* '+encodeURIComponent(total)+'%0A%0A';
+  msg+='*Customer Details*%0A';
+  msg+='*Name:* '+encodeURIComponent(name)+'%0A';
+  msg+='*Phone:* '+encodeURIComponent(phone)+'%0A';
+  msg+='*Delivery Location:* '+encodeURIComponent(loc)+'%0A';
+  if(notes) msg+='*Notes:* '+encodeURIComponent(notes)+'%0A';
+  if(proj) msg+='*Project Description:* '+encodeURIComponent(proj)+'%0A';
+  msg+='%0A_Order placed via TopTank Kenya website_';
+  // Open WhatsApp
+  const waNumber='254722000000'; // Replace with actual WhatsApp number
+  window.open('https://wa.me/'+waNumber+'?text='+msg,'_blank');
+  // Show success
+  document.getElementById('modalBody').innerHTML=`
+    <div class="order-success">
+      <div class="success-icon" style="background:#25D366"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+      <h3>Redirecting to WhatsApp!</h3>
+      <p>Thank you <strong>${name}</strong>! Your order details are being sent to our team via WhatsApp.</p>
+      <div style="background:var(--yellow-pale);border:1px solid var(--yellow);border-radius:var(--radius);padding:16px;margin:0 auto 20px;max-width:320px;text-align:left">
+        <div style="font-size:.82rem;color:var(--mid);line-height:1.8">
+          <div><strong>Product:</strong> ${c.name}</div>
+          <div><strong>Capacity:</strong> ${c.cap}</div>
+          ${!c.isCart&&!isCustom?`<div><strong>Quantity:</strong> ${qty}</div>`:''}
+          <div><strong>Total:</strong> ${total}</div>
+          <div><strong>Delivery to:</strong> ${loc}</div>
+          <div><strong>Contact:</strong> ${phone}</div>
+        </div>
+      </div>
+      <p style="font-size:.85rem">If WhatsApp didn't open automatically, <a href="#" onclick="window.open('https://wa.me/'+waNumber+'?text='+msg,'_blank');return false;" target="_blank" style="color:var(--green);font-weight:600">click here</a>. Our team will confirm your order within 2 hours.</p>
+    </div>`;
+  document.getElementById('modalFoot').innerHTML=`<button class="btn btn-yellow" style="width:100%;justify-content:center" onclick="closeModal()">Close</button>`;
+  if(!c.isCart)clearCart();
+}
+
+// ---- PRODUCT TABS ----
+document.querySelectorAll('.tab-btn').forEach(b=>{
+  b.onclick=function(){
+    document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.prod-panel').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+    const p=document.getElementById('tab-'+this.dataset.tab);
+    if(p)p.classList.add('active');
+  };
+});
+
+// ---- SCROLL REVEAL ----
+const revEls=document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+revEls.forEach(el=>obs.observe(el));
+
+// ---- COUNTER ANIMATION ----
+function animCount(el,val,suf){
+  let n=0;const step=val/(1600/16);
+  const t=setInterval(()=>{n=Math.min(n+step,val);el.innerHTML=Math.floor(n).toLocaleString()+'<em>'+suf+'</em>';if(n>=val)clearInterval(t);},16);
+}
+const statsObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    animCount(document.getElementById('s1'),25,'+');
+    animCount(document.getElementById('s2'),500,'K+');
+    animCount(document.getElementById('s3'),200,'+');
+    animCount(document.getElementById('s4'),47,'');
+    statsObs.disconnect();
+  }
+},{threshold:.4});
+const statsSec=document.querySelector('.stats');
+if(statsSec)statsObs.observe(statsSec);
+
+// ---- CONTACT FORM ----
+function cfSubmit(btn){
+  const o=btn.innerHTML;btn.innerHTML='✓ Message Sent!';btn.style.background='var(--green)';
+  setTimeout(()=>{btn.innerHTML=o;btn.style.background='';},3500);
+}
+
+// ---- SMOOTH SCROLL ----
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.onclick=e=>{
+    const id=a.getAttribute('href');if(id==='#')return;
+    const el=document.querySelector(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});closeMob();}
+  };
+});
+
+// ---- ESC key ----
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeCart();closeModal();closeMob();}
+});
+</script>
 </body>
 </html>
