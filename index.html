@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://www.toptank.com/wp-content/uploads/2021/03/TopTank-Website-Logos-04.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18396132290"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18396132290');
+</script>
 <style>
 /* ==========================================================
    DESIGN TOKENS
@@ -1364,6 +1372,14 @@ function submitOrder(){
   // Open WhatsApp
   const waNumber='254785952551'; // Replace with actual WhatsApp number
   window.open('https://wa.me/'+waNumber+'?text='+msg,'_blank');
+  // Google Ads conversion tracking
+  const orderTxnId='TT-'+Date.now();
+  if(typeof gtag==='function'){
+    gtag('event','conversion',{
+      'send_to':'AW-18396132290/iSFjCKv6zOMcEMLn-sNE',
+      'transaction_id':orderTxnId
+    });
+  }
   // Show success
   document.getElementById('modalBody').innerHTML=`
     <div class="order-success">
